@@ -87,6 +87,7 @@ class Program
             var json = JsonSerializer.Serialize(defaultConfig, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, json);
             Console.WriteLine("✅ Datei 'config.json' wurde erstellt. Bitte ggf. anpassen und erneut starten.");
+            Console.ReadKey();
             Environment.Exit(0);
         }
 
