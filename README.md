@@ -6,7 +6,7 @@ Dieses kleine C#-Konsolenprogramm nutzt **Vosk** zur Spracherkennung und **NAudi
 
 - Echtzeit-Spracherkennung mit Vosk
 - Unterstützt deutsche Sprache
-- Löst Hotkey (F8) bei bestimmten Sprachbefehlen aus
+- Löst Hotkey bei bestimmten Sprachbefehlen aus
 - Minimaler Ressourcenbedarf
 
 ## 📦 Setup
