@@ -24,7 +24,26 @@ class Program
         var config = LoadOrCreateConfig(configPath);
 
         Vosk.Vosk.SetLogLevel(0);
-        var model = new Model(config.ModelPath);
+        if (!Directory.Exists(config.ModelPath))
+        {
+            Console.WriteLine($"❌ Vosk-Modellordner '{config.ModelPath}' wurde nicht gefunden.");
+            Console.WriteLine("➡ Bitte lade das Modell von: https://alphacephei.com/vosk/models");
+            Console.ReadKey();
+            Environment.Exit(1);
+        }
+
+        Model model;
+        try
+        {
+            model = new Model(config.ModelPath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Fehler beim Laden des Vosk-Modells:\n{ex.Message}");
+            Console.ReadKey();
+            Environment.Exit(1);
+            return;
+        }
 
         using var recognizer = new VoskRecognizer(model, config.SampleRate);
         using var waveIn = new WaveInEvent();
@@ -88,3 +107,4 @@ class Program
         return 0;
     }
 }
+    
